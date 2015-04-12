@@ -16,7 +16,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -5.0
+        NSStrokeWidthAttributeName : -3.5
     ]
     
     // Outlets
@@ -25,6 +25,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var bottomNavBar: UIToolbar!
     @IBOutlet weak var topNavBar: UIToolbar!
     
@@ -48,19 +49,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.topText.defaultTextAttributes = memeTextAttributes
         self.topText.delegate = topTextDelegate
         self.topText.textAlignment = .Center
+        self.topText.text = "TOP"
         self.bottomText.defaultTextAttributes = memeTextAttributes
         self.bottomText.delegate = bottomTextDelegate
         self.bottomText.textAlignment = .Center
+        self.bottomText.text = "BOTTOM"
         
-        // Setup NavBar
-//        
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "startOver")
-//        
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareMeme")
-//        
-//        
-        // self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "collection"), style: .Plain, target: self, action: "startOver")
+        memeImage.image = nil
         
+        // Disable share button until an image is selected
+        shareButton.enabled = false
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -86,7 +84,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // UIImagePickerController protocol functions
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            // Set the image & enable share button
             memeImage.image = image
+            shareButton.enabled = true
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -115,13 +115,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        println("in keyboard Show")
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomText.isFirstResponder() {
+            self.view.frame.origin.y -= getKeyboardHeight(notification) - 20
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        println("in keyboard Hide")
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        if bottomText.isFirstResponder() {
+            self.view.frame.origin.y += getKeyboardHeight(notification) - 20
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
@@ -129,8 +131,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue // of CGRect
         return keyboardSize.CGRectValue().height
     }
-    
-
     
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         // Generate Memed image
@@ -147,11 +147,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func cancelEditor(sender: UIBarButtonItem) {
         // Dismiss View Controller
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    func startOver() {
-        if let navigationController = self.navigationController? {
-            navigationController.popToRootViewControllerAnimated(true)
-        }
     }
     
     func generateMemedImage() -> UIImage {
