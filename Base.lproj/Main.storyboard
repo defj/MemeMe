@@ -41,7 +41,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mOF-lD-pnk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cIU-3K-nKi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cIU-3K-nKi">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="jaX-av-1F4"/>
@@ -59,7 +59,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YW2-tz-OPH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YW2-tz-OPH">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dcF-KB-6e3"/>
@@ -157,10 +157,6 @@
                                 <exclude reference="OND-eh-Pch"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="l8i-Pa-gI8"/>
-                                <exclude reference="00m-1W-jm3"/>
-                                <exclude reference="DYO-B2-kuO"/>
-                                <exclude reference="gM6-Ql-sk3"/>
                                 <exclude reference="5KI-IU-SmQ"/>
                                 <exclude reference="7AP-lH-CSW"/>
                                 <exclude reference="Im8-Ma-O2k"/>
@@ -173,6 +169,10 @@
                                 <exclude reference="a68-rq-ZCT"/>
                                 <exclude reference="f9q-E7-HiD"/>
                                 <exclude reference="mi2-eX-Bh4"/>
+                                <exclude reference="l8i-Pa-gI8"/>
+                                <exclude reference="00m-1W-jm3"/>
+                                <exclude reference="DYO-B2-kuO"/>
+                                <exclude reference="gM6-Ql-sk3"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -184,10 +184,6 @@
                                 <include reference="OND-eh-Pch"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="l8i-Pa-gI8"/>
-                                <include reference="00m-1W-jm3"/>
-                                <include reference="DYO-B2-kuO"/>
-                                <include reference="gM6-Ql-sk3"/>
                                 <include reference="5KI-IU-SmQ"/>
                                 <include reference="7AP-lH-CSW"/>
                                 <include reference="Im8-Ma-O2k"/>
@@ -200,6 +196,10 @@
                                 <include reference="a68-rq-ZCT"/>
                                 <include reference="f9q-E7-HiD"/>
                                 <include reference="mi2-eX-Bh4"/>
+                                <include reference="l8i-Pa-gI8"/>
+                                <include reference="00m-1W-jm3"/>
+                                <include reference="DYO-B2-kuO"/>
+                                <include reference="gM6-Ql-sk3"/>
                             </mask>
                         </variation>
                     </view>
@@ -312,7 +312,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="151" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-97-hxh">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-97-hxh">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="12" y="13" width="126" height="123"/>
